@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>Lista.h</itemPath>
+      <itemPath>SqlParserTraductor.h</itemPath>
+      <itemPath>socketServer.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Lista.cpp</itemPath>
+      <itemPath>SqlParserTraductor.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+      <itemPath>socketServer.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>`pkg-config --libs pthread-stubs`</linkerOptionItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="Lista.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Lista.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SqlParserTraductor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SqlParserTraductor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="socketServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="socketServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <commandlineTool>g++</commandlineTool>
+          <commandLine>-std=c++11</commandLine>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <commandlineTool>g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerOptionItem>`pkg-config --libs pthread-stubs`</linkerOptionItem>
+            <linkerLibLibItem>sqlparser</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../../sql-parser-master"
+                        CT="0"
+                        CN="Default"
+                        AC="true"
+                        BL="false"
+                        WD="../../sql-parser-master"
+                        BC="${MAKE} -f Makefile"
+                        CC="${MAKE} -f Makefile clean"
+                        OP="libsqlparser.so">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="Lista.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Lista.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SqlParserTraductor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SqlParserTraductor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="socketServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="socketServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
