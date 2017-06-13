@@ -23,7 +23,7 @@ bool SocketServer::crear_Socket()
     if(descriptor < 0)
         return false;
     info.sin_family = AF_INET;
-    info.sin_addr.s_addr = INADDR_ANY;
+    info.sin_addr.s_addr =htonl(INADDR_ANY);
     info.sin_port = htons(30666);
     memset(&info.sin_zero,0,sizeof(info.sin_zero));
     return true;
@@ -34,7 +34,7 @@ bool SocketServer::ligar_kernel()
     if((bind(descriptor,(sockaddr *)&info,(socklen_t)sizeof(info))) < 0)
         return false;
 
-    listen(descriptor,5);
+    listen(descriptor,1024);
     return true;
 }
 
