@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=MutiThreadServer1
+PROJECTNAME=MutiThreadServer2
 
 # Active Configuration
 DEFAULTCONF=Debug
