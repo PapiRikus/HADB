@@ -25,7 +25,7 @@ public:
     void escribirEntero(string std, long posicion);
     string recuperarCaracteres(long posicion);
     bool validarExistencia(long posicion);
-    void crearTabla(int indice);
+    long crearTabla(int indice);
     void agregarFila(int tabla, int indicecolumna, string valor);
     void agregarDatoColumna(int indice,int posicion,int locacion, string dato);
     void escribirCaracteres(string std, long posicion);
@@ -33,13 +33,12 @@ public:
     bool recuperarAux(long posicion);
     string pasarIntBinario(int numero);
     string recuperarEntero(long posicion);
-
 private:
     void eliminarEntero(long posicion);
     void eliminarCaracter(long posicion);
     int bloqueEntero = 32;
     int bloqueString = 2048;
-    long cantidadGeneral = 0;
+    long cantidadGeneral = 1;
     int tamanoTabla = 20544;
 };
 

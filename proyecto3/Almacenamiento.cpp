@@ -29,24 +29,49 @@ void Datos::editar(long n, bool &x) {
 
 
 // Este metodo es el que crea las tablas;
-void Datos::crearTabla(int indice) {
+long Datos::crearTabla(int indice) {
     string value = pasarIntBinario(indice);
     long posicion = 1;
+    int x = 1;
     bool p = true;
     while(p){
             if(!(this->recuperarEntero(posicion)=="")){
+                x = x + 1;
                 posicion =  posicion + this->tamanoTabla;
+
             }else{
                 p = false;
             }
         }
     this->escribirEntero(value,posicion);
-    string valor = pasarIntBinario(1);
+    string valor = pasarIntBinario(x);
     this->escribirEntero(valor, posicion + 32);
     this->cantidadGeneral = cantidadGeneral + 1;
+    return x;
 }
 
-
+/**
+ * This function add data in tables
+ * @param tabla
+ * @param indicecolumna
+ * @param valor
+ */
+/*void Datos::agregarFila(int tabla, int indicecolumna, string valor) {
+    string value = pasarIntBinario(tabla);
+    long posicion = 1;
+    bool p = true;
+    while(p){
+        if(!(this->recuperarEntero(posicion)=="")){
+            posicion =  posicion + this->tamanoTabla;
+        }else{
+            p = false;
+        }
+    }
+    this->escribirEntero(value,posicion);
+    string valor = pasarIntBinario(this->cantidadGeneral);
+    this->escribirEntero(valor, posicion + 32);
+    this->cantidadGeneral = cantidadGeneral + 1;
+}*/
 
 
 bool Datos::recuperarAux(long posicion) {
@@ -101,15 +126,7 @@ string Datos::recuperarCaracteres(long posicion) {
     return retorno;
 }
 
-/**
- * This function add data in tables
- * @param tabla
- * @param indicecolumna
- * @param valor
- */
-void Datos::agregarFila(int tabla, int indicecolumna, string valor) {
 
-}
 
 
 string Datos::cortarString(string string1) {
@@ -228,6 +245,7 @@ void Datos::escribirCaracteres(string std, long posicion) {
  * @param dato
  */
 void Datos::agregarDatoColumna(int indiceTabla, int posicion,int locacion , string dato) {
+
     long pos = 1;
     int x;
     string tabla = pasarIntBinario(indiceTabla);
@@ -235,7 +253,7 @@ void Datos::agregarDatoColumna(int indiceTabla, int posicion,int locacion , stri
         if ((this->recuperarEntero(pos) == tabla)){
             if(this->recuperarEntero(pos + 32) == this->pasarIntBinario(posicion)){
                 long valor = pos + this->bloqueString*(locacion-1) + 64;
-
+                cout<<" se agrega el dato: "<<dato <<" en la tabla: "<< "en la columna: " << posicion << " en la locacion: " <<locacion;
                 this->escribirCaracteres(dato, valor);
 
                 break;
