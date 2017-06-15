@@ -35,10 +35,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/BTree.o \
+	${OBJECTDIR}/ArbolBmas.o \
+	${OBJECTDIR}/Client.o \
+	${OBJECTDIR}/HuffmanCompresor.o \
 	${OBJECTDIR}/MasterEngine.o \
+	${OBJECTDIR}/NodoBmas.o \
+	${OBJECTDIR}/NodoProducto.o \
+	${OBJECTDIR}/Server.o \
 	${OBJECTDIR}/XMLDocument.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/mythread.o
 
 
 # C Compiler Flags
@@ -55,7 +61,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lxerces-c-3.1 -lxerces-c -lxerces-c
+LDLIBSOPTIONS=-lxerces-c-3.1 -lxerces-c -lxerces-c -lpthread `pkg-config --libs pthread-stubs` `pkg-config --libs jsoncpp`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -65,25 +71,55 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/masterengine: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/masterengine ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/BTree.o: BTree.cpp
+${OBJECTDIR}/ArbolBmas.o: ArbolBmas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BTree.o BTree.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArbolBmas.o ArbolBmas.cpp
+
+${OBJECTDIR}/Client.o: Client.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Client.o Client.cpp
+
+${OBJECTDIR}/HuffmanCompresor.o: HuffmanCompresor.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HuffmanCompresor.o HuffmanCompresor.cpp
 
 ${OBJECTDIR}/MasterEngine.o: MasterEngine.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MasterEngine.o MasterEngine.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MasterEngine.o MasterEngine.cpp
+
+${OBJECTDIR}/NodoBmas.o: NodoBmas.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoBmas.o NodoBmas.cpp
+
+${OBJECTDIR}/NodoProducto.o: NodoProducto.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoProducto.o NodoProducto.cpp
+
+${OBJECTDIR}/Server.o: Server.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
 
 ${OBJECTDIR}/XMLDocument.o: XMLDocument.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/XMLDocument.o XMLDocument.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/XMLDocument.o XMLDocument.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/mythread.o: mythread.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mythread.o mythread.cpp
 
 # Subprojects
 .build-subprojects:

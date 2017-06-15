@@ -35,10 +35,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/BTree.o \
+	${OBJECTDIR}/ArbolBmas.o \
+	${OBJECTDIR}/Client.o \
+	${OBJECTDIR}/HuffmanCompresor.o \
 	${OBJECTDIR}/MasterEngine.o \
+	${OBJECTDIR}/NodoBmas.o \
+	${OBJECTDIR}/NodoProducto.o \
+	${OBJECTDIR}/Server.o \
 	${OBJECTDIR}/XMLDocument.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/mythread.o
 
 
 # C Compiler Flags
@@ -65,15 +71,40 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/masterengine: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/masterengine ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/BTree.o: BTree.cpp
+${OBJECTDIR}/ArbolBmas.o: ArbolBmas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BTree.o BTree.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArbolBmas.o ArbolBmas.cpp
+
+${OBJECTDIR}/Client.o: Client.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Client.o Client.cpp
+
+${OBJECTDIR}/HuffmanCompresor.o: HuffmanCompresor.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HuffmanCompresor.o HuffmanCompresor.cpp
 
 ${OBJECTDIR}/MasterEngine.o: MasterEngine.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MasterEngine.o MasterEngine.cpp
+
+${OBJECTDIR}/NodoBmas.o: NodoBmas.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoBmas.o NodoBmas.cpp
+
+${OBJECTDIR}/NodoProducto.o: NodoProducto.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoProducto.o NodoProducto.cpp
+
+${OBJECTDIR}/Server.o: Server.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
 
 ${OBJECTDIR}/XMLDocument.o: XMLDocument.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -84,6 +115,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/mythread.o: mythread.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mythread.o mythread.cpp
 
 # Subprojects
 .build-subprojects:

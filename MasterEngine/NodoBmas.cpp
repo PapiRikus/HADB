@@ -5,20 +5,18 @@
  */
 
 /* 
- * File:   BTree.cpp
+ * File:   NodoBmas.cpp
  * Author: aaronsolera
  * 
- * Created on 14 de junio de 2017, 01:21 AM
+ * Created on 15 de junio de 2017, 07:24 AM
  */
+//
+// Created by richard on 24/05/17.
+//
 
-#include "BTree.h"
-
-BTree::BTree() {
-}
-
-BTree::BTree(const BTree& orig) {
-}
-
-BTree::~BTree() {
+#include "NodoBmas.h"
+// Costructor
+NodoBmas::NodoBmas(){
+    cuentas = 0;
 }
 
