@@ -28,7 +28,9 @@ public:
     long crearTabla(int indice);
     void agregarFila(int tabla, int indicecolumna, string valor);
     void agregarDatoColumna(int indice,int posicion,int locacion, string dato);
+    void eliminarDatoColumna(int indice,int posicion,int locacion);
     void escribirCaracteres(string std, long posicion);
+    string BuscarDatoColumna(int indiceTabla, int posicion,int locacion);
     bool EliminarFila(int tabla, int id);
     bool recuperarAux(long posicion);
     string pasarIntBinario(int numero);

@@ -253,6 +253,7 @@ void Datos::agregarDatoColumna(int indiceTabla, int posicion,int locacion , stri
             if(this->recuperarEntero(pos + 32) == this->pasarIntBinario(posicion)){
                 long valor = pos + this->bloqueString*(locacion-1) + 64;
                 cout<<" se agrega el dato: "<<dato <<" en la tabla: "<< "en la columna: " << posicion << " en la locacion: " <<locacion;
+               // this->eliminarCaracter(valor);
                 this->escribirCaracteres(dato, valor);
 
                 break;
@@ -263,9 +264,44 @@ void Datos::agregarDatoColumna(int indiceTabla, int posicion,int locacion , stri
 
 }
 
+void Datos::eliminarDatoColumna(int indiceTabla, int posicion,int locacion) {
 
+    long pos = 1;
+    int x;
+    string tabla = pasarIntBinario(indiceTabla);
+    while(this->recuperarEntero(pos)!="") {
+        if ((this->recuperarEntero(pos) == tabla)){
+            if(this->recuperarEntero(pos + 32) == this->pasarIntBinario(posicion)){
+                long valor = pos + this->bloqueString*(locacion-1) + 64;
+                this->eliminarCaracter(valor);
+                
+                break;
+            }
+        }
+        pos = pos + this->tamanoTabla;
+    }
 
+}
 
+string Datos::BuscarDatoColumna(int indiceTabla, int posicion,int locacion) {
+
+    long pos = 1;
+    string retorno;
+    int x;
+    string tabla = pasarIntBinario(indiceTabla);
+    while(this->recuperarEntero(pos)!="") {
+        if ((this->recuperarEntero(pos) == tabla)){
+            if(this->recuperarEntero(pos + 32) == this->pasarIntBinario(posicion)){
+                long valor = pos + this->bloqueString*(locacion-1) + 64;
+                retorno = this->recuperarCaracteres(valor);
+                break;
+            }
+        }
+        pos = pos + this->tamanoTabla;
+    }
+    return retorno;
+
+}
 /**
  * este metodo pasa los enteros a binario
  * @param numero

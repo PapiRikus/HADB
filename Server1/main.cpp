@@ -16,8 +16,6 @@
 //#include <boost/regex.hpp>
 #include <regex>
 #include <iostream>
-#include "hsql/SQLParser.h"
-#include "hsql/util/sqlhelper.h"
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/writer.h>
@@ -77,7 +75,7 @@ int main(int argc, char** argv) {
     regex createIndex("CREATE INDEX\\s+\\<(.*?)\\>?;");
     Json::Value fromScratch;
     fromScratch["hola"]="sdfsdf";
-    fromScratch ["atun"]="La concha de su tia";
+    fromScratch ["atun"]="prueba";
     Json::StyledWriter writerr;
     string out=writerr.write(fromScratch);
     cout<<out;
@@ -190,8 +188,9 @@ int main(int argc, char** argv) {
    pthread_detach(hiloServer);
 
    while (1) {
-       string mensaje="SELECT Patatas FROM t,a,b WHERE a BETWEEN 1 and 'c';";
+       string mensaje;
        cin >> mensaje;
+       
        server->setMensaje(mensaje.c_str());
    }
        //smatch m;
