@@ -55,7 +55,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lpthread `pkg-config --libs pthread-stubs` -lsqlparser `pkg-config --libs json` `pkg-config --libs jsoncpp`  
+LDLIBSOPTIONS=-lpthread `pkg-config --libs pthread-stubs` `pkg-config --libs jsoncpp` `pkg-config --libs jsoncpp`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -68,22 +68,22 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/server1: ${OBJECTFILES}
 ${OBJECTDIR}/Lista.o: Lista.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Lista.o Lista.cpp
+	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Lista.o Lista.cpp
 
 ${OBJECTDIR}/SqlParserTraductor.o: SqlParserTraductor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SqlParserTraductor.o SqlParserTraductor.cpp
+	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SqlParserTraductor.o SqlParserTraductor.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/socketServer.o: socketServer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/socketServer.o socketServer.cpp
+	$(COMPILE.cc) -O2 `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/socketServer.o socketServer.cpp
 
 # Subprojects
 .build-subprojects:

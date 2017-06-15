@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
     
     XMLDocument* doc = new XMLDocument("masterMetaData.xml");
     
-    //doc->createTable("Personas", "Nombre", "string", "4");
+    doc->createTable("Personas", "Nombre", "string", "4");
     
     //doc->createColumnInTable("Personas", "Apellido", "string", "4");
     

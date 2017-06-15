@@ -89,8 +89,7 @@
           <linkerLibItems>
             <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
             <linkerOptionItem>`pkg-config --libs pthread-stubs`</linkerOptionItem>
-            <linkerLibLibItem>sqlparser</linkerLibLibItem>
-            <linkerOptionItem>`pkg-config --libs json`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs jsoncpp`</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs jsoncpp`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>

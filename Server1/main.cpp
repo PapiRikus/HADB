@@ -16,8 +16,6 @@
 //#include <boost/regex.hpp>
 #include <regex>
 #include <iostream>
-#include "hsql/SQLParser.h"
-#include "hsql/util/sqlhelper.h"
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/writer.h>
@@ -76,12 +74,21 @@ int main(int argc, char** argv) {
     regex dropTable("DROP TABLE\\s+(.*?)?;");
     //1 grupo son la tabla o tablas 
     regex createIndex("CREATE INDEX\\s+\\<(.*?)\\>?;");
+<<<<<<< HEAD
     //Json::Value fromScratch;
 //    fromScratch["hola"]="sdfsdf";
   //  fromScratch ["atun"]="La concha de su tia";
    // Json::StyledWriter writerr;
     //string out=writerr.write(fromScratch);
     //cout<<out;
+=======
+    Json::Value fromScratch;
+    fromScratch["hola"]="sdfsdf";
+    fromScratch ["atun"]="prueba";
+    Json::StyledWriter writerr;
+    string out=writerr.write(fromScratch);
+    cout<<out;
+>>>>>>> master
 //    regex selectjoin("SELECT\\s+(.*?)\\s*FROM\\s+(.*?)\\s*(WHERE\\s(.*?)\\s*|JOIN\\s(.*?)\\s*)?;");
 //    regex create("CREATE TABLE ([a-zA-Z0-9]+) \\(([a-zA-Z0-9]+( INT| BOOL| CHAR| STRING\\([0-9]+\\))+( REFERENCE\\([a-zA-Z0-9]+\\.[a-zA-Z0-9]+\\))?(,[a-zA-Z0-9]+ (INT|BOOL|CHAR|STRING\\([0-9]+\\))+( REFERENCE\\([a-zA-Z0-9]+\\.[a-zA-Z0-9]+\\))?)*)+(, PRIMARY KEY ([a-zA-Z]+))?\))"; // entire match will be 2 numbers
     //regex e("([[:w:]]+)@([[:w:]]+)\\.com");
@@ -147,6 +154,7 @@ int main(int argc, char** argv) {
  //   server = new SocketServer;
    //regex integer("^(INSERT INTO|UPDATE|SELECT|WITH|DELETE)(?:[^;']|(?:'[^']+'))+;\\s*$");
 //	
+<<<<<<< HEAD
 //   pthread_t hiloServer;
 //  
 //   pthread_create(&hiloServer,0,serverRun,NULL);
@@ -157,6 +165,19 @@ int main(int argc, char** argv) {
 //       cin >> mensaje;
 //       server->setMensaje(mensaje.c_str());
 //   }
+=======
+   pthread_t hiloServer;
+  
+   pthread_create(&hiloServer,0,serverRun,NULL);
+   pthread_detach(hiloServer);
+
+   while (1) {
+       string mensaje;
+       cin >> mensaje;
+       
+       server->setMensaje(mensaje.c_str());
+   }
+>>>>>>> master
        //smatch m;
        //if(regex_search(mensaje,m,integer)){
         //for (int i=0;i<m.size();i++){
