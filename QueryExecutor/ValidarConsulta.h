@@ -15,7 +15,15 @@
 #define VALIDARCONSULTA_H
 
 #include <vector>
+#include <cstdlib>
+
 #include <iostream>
+#include <jsoncpp/json/json.h>
+#include <jsoncpp/json/reader.h>
+#include <jsoncpp/json/writer.h>
+#include <jsoncpp/json/value.h>
+#include <regex>
+
 using namespace std;
 class ValidarConsulta {
 public:
@@ -23,7 +31,10 @@ public:
     ValidarConsulta(const ValidarConsulta& orig);
     virtual ~ValidarConsulta();
     bool ValidarSintaxis(string consulta);
-      vector<string>argumentos;
+    vector<string>argumentos;
+    string jsonString;
+    string jsonSelect(std::smatch);  
+    
 private:
     bool consulta;
 };

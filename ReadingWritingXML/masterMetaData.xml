@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<dataBase>
+
+	<table name="Estudiantes">
+		
+		  <columns>
+			  <column>
+				    <name>Nombre</name>
+				    <dataType>string</dataType>
+				    <bytes>4</bytes>
+			</column>
+			  <column>
+				    <name>Apellidos</name>
+				    <dataType>string</dataType>
+				    <bytes>4</bytes>
+			</column>
+			  <column>
+				    <name>Cedula</name>
+				    <dataType>integer</dataType>
+				    <bytes>4</bytes>
+			</column>
+		</columns>
+
+	</table>
+
+	<table name="Vehiculos">
+		
+		  <columns>
+			  <column>
+				    <name>Nombre</name>
+				    <dataType>string</dataType>
+				    <bytes>4</bytes>
+			</column>
+			  <column>
+				    <name>Apellidos</name>
+				    <dataType>string</dataType>
+				    <bytes>4</bytes>
+			</column>
+			  <column>
+				    <name>Cedula</name>
+				    <dataType>integer</dataType>
+				    <bytes>4</bytes>
+			</column>
+		</columns>
+
+	</table>
+
+  
+
+
+</dataBase>

@@ -116,9 +116,16 @@ void *Server::HandleClient(void *args) {
   while(1) {
     memset(buffer, 0, sizeof buffer);
     n = recv(c->sock, buffer, sizeof buffer, 0);
+    
     string strr(buffer); 
     snprintf(message, sizeof message, "<%s>: %s", c->name, buffer);
-     bool vv =validarr->ValidarSintaxis(strr);
+    string sstrr="SELECT";    
+    if (sstrr.compare(message)){
+        cout<<"Es un Select"<<endl;
+         sstrr="SELECT * FROM orders;";
+    }
+    
+     bool vv =validarr->ValidarSintaxis(sstrr);
      cout<<"QUE es sdfd:"<<vv;
      //socketCli->setMensaje(buffer);
     //Client disconnected?
@@ -142,12 +149,13 @@ void *Server::HandleClient(void *args) {
       cerr << "Error while receiving message from client: " << c->name << endl;
     }
     else {
+        cout<<"vv es igual:"<<vv;
         if (vv==false){
           MyThread::LockMutex("'SendToAll()'");
          
           //snprintf(message, sizeof message, "%s", c->name,"Invalid SQL Statmetment");      
           index = Server::FindClientIndex(c);
-          strncat(message, "Invalid SQL Statment", sizeof message);
+          strncat(message, "Invalid SQL Statment\n", sizeof message);
          // strcpy(message,"Invalid SQL Statment");
           cout<<"Esto va a mandar a el mismo:"<<message<<endl;
           n = send(Server::clients[index].sock, message, strlen(message), 0);
@@ -157,12 +165,19 @@ void *Server::HandleClient(void *args) {
         //Release the lock  
         MyThread::UnlockMutex("'SendToAll()'");
       }else{
-            
-             MyThread::LockMutex("'SendToAll()'");
-          //snprintf(message, sizeof message, "%s", c->name,"Invalid SQL Statmetment");      
+            cout<<"vv es verdad:"<<vv;
+        
+          MyThread::LockMutex("'SendToAll()'");
+        //  snprintf(message, sizeof message, "%s", c->name,"Invalid SQL Statmetment");   
+        //  string mandar=""
+          //string a="Valid Sql Statment";
+          string tmp =validarr->jsonString;
+            //char tab2[1024];
+            //strcpy(tab2, tmp.c_str());
+            socketCli->setMensaje(tmp.c_str());
           index = Server::FindClientIndex(c);
          // strcpy(message,"Invalid SQL Statment");
-          n = send(Server::clients[index].sock, message, strlen(message), 0);
+        //  n = send(Server::clients[index].sock, tab2, strlen(tab2), 0);
           
   
         //Release the lock  

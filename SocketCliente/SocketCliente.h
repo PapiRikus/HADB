@@ -34,6 +34,7 @@ public:
     SocketCliente(const SocketCliente& orig);
     virtual ~SocketCliente();
     bool conectar();
+    static string mensajee;
     void setMensaje(const char *msj);
 private:
     int descriptor;
