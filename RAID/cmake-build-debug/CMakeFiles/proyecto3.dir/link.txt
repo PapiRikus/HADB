@@ -1,1 +1,0 @@
-/usr/bin/c++   -g   CMakeFiles/proyecto3.dir/main.cpp.o CMakeFiles/proyecto3.dir/Almacenamiento.cpp.o  -o proyecto3 
