@@ -25,18 +25,19 @@ bool SocketCliente::conectar(){
     if(descriptor < 0)
         return false;
     info.sin_family = AF_INET;
-    info.sin_addr.s_addr = inet_addr("127.0.0.1");
-    info.sin_port = ntohs(30666);
+    info.sin_addr.s_addr = inet_addr("192.168.1.132");
+    info.sin_port = ntohs(30667);
     memset(&info.sin_zero,0,sizeof(info.sin_zero));
     
     if (connect(descriptor,(sockaddr*)&info,(socklen_t)sizeof(info))<0){
         return false;
     }
+    
     pthread_t hilo;
     
     pthread_create(&hilo,0,SocketCliente::controlador,(void*)this);
     pthread_detach(hilo);
-    
+    setMensaje("QE");
     
     return true;
 }
@@ -54,8 +55,11 @@ void * SocketCliente::controlador(void*obj){
                 break;
         }
         cout << mensaje << endl;
+        
+        SocketCliente::mensajee=(mensaje);
+//        this->mensajee=mensaje;
     }
-
+    
     close(padre->descriptor);
     pthread_exit(NULL);
     

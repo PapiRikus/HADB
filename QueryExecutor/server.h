@@ -28,13 +28,14 @@
 #include "Client.h"
 #define PORT 30666
 
+
 using namespace std;
 
 class Server {
 
   private:
     static vector<Client> clients;
-
+    static Client* MasterEngine; 
     //Socket stuff
     int serverSock, clientSock;
     struct sockaddr_in serverAddr, clientAddr;

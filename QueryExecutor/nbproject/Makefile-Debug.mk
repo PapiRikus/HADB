@@ -58,7 +58,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=`pkg-config --libs pthread-stubs` -lpthread   
+LDLIBSOPTIONS=`pkg-config --libs pthread-stubs` -lpthread  `pkg-config --libs json` `pkg-config --libs jsoncpp`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -71,37 +71,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mutithreadserver1: ${OBJECTFILES}
 ${OBJECTDIR}/Client.o: Client.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Client.o Client.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Client.o Client.cpp
 
 ${OBJECTDIR}/HuffmanCompresor.o: HuffmanCompresor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HuffmanCompresor.o HuffmanCompresor.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HuffmanCompresor.o HuffmanCompresor.cpp
 
 ${OBJECTDIR}/Server.o: Server.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
 
 ${OBJECTDIR}/SocketCliente.o: SocketCliente.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SocketCliente.o SocketCliente.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SocketCliente.o SocketCliente.cpp
 
 ${OBJECTDIR}/ValidarConsulta.o: ValidarConsulta.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ValidarConsulta.o ValidarConsulta.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ValidarConsulta.o ValidarConsulta.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/mythread.o: mythread.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mythread.o mythread.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags json` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mythread.o mythread.cpp
 
 # Subprojects
 .build-subprojects:
