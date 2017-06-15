@@ -61,7 +61,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lxerces-c-3.1 -lxerces-c -lxerces-c -lpthread `pkg-config --libs pthread-stubs` `pkg-config --libs jsoncpp`  
+LDLIBSOPTIONS=-lxerces-c-3.1 -lxerces-c -lxerces-c -lpthread `pkg-config --libs jsoncpp`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -74,52 +74,52 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/masterengine: ${OBJECTFILES}
 ${OBJECTDIR}/ArbolBmas.o: ArbolBmas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArbolBmas.o ArbolBmas.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArbolBmas.o ArbolBmas.cpp
 
 ${OBJECTDIR}/Client.o: Client.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Client.o Client.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Client.o Client.cpp
 
 ${OBJECTDIR}/HuffmanCompresor.o: HuffmanCompresor.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HuffmanCompresor.o HuffmanCompresor.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HuffmanCompresor.o HuffmanCompresor.cpp
 
 ${OBJECTDIR}/MasterEngine.o: MasterEngine.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MasterEngine.o MasterEngine.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MasterEngine.o MasterEngine.cpp
 
 ${OBJECTDIR}/NodoBmas.o: NodoBmas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoBmas.o NodoBmas.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoBmas.o NodoBmas.cpp
 
 ${OBJECTDIR}/NodoProducto.o: NodoProducto.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoProducto.o NodoProducto.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoProducto.o NodoProducto.cpp
 
 ${OBJECTDIR}/Server.o: Server.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server.o Server.cpp
 
 ${OBJECTDIR}/XMLDocument.o: XMLDocument.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/XMLDocument.o XMLDocument.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/XMLDocument.o XMLDocument.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/mythread.o: mythread.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g `pkg-config --cflags pthread-stubs` `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mythread.o mythread.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags jsoncpp`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mythread.o mythread.cpp
 
 # Subprojects
 .build-subprojects:

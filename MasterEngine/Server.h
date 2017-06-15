@@ -34,8 +34,8 @@
 #include "mythread.h"
 #include "HuffmanCompresor.h"
 #include "Client.h"
+#include "XMLDocument.h"
 #define PORT 30667
-
 using namespace std;
 
 class JSON{
@@ -51,6 +51,9 @@ public:
     }
     void add(string key, string data){
         this->json[key] = data;
+    }
+    void setValue(string data){
+        this->r.parse(data.c_str(), this->json);
     }
     Json::Value data(){
         return this->json;
@@ -68,6 +71,7 @@ public:
 class Server {
   private:
     HuffmanCompresor* hoffman;
+   // XMLDocument *xmldoc;
     static vector<Client> clients;
     //Socket stuff
     int serverSock, clientSock;
@@ -77,12 +81,13 @@ class Server {
     Server();
     void AcceptAndDispatch();
     static void *HandleClient(void *args);
-    static void Send(int diskN, string json);
+    static void Send(int diskN, JSON *json);
     static string Listen();
   private:
     static string toString(char* c);
     static void ListClients();
-    static void SendToPair(int diskN, string json);
+    static void processQuery(JSON *json);
+    static void SendToPair(int diskN, JSON *json);
     static int FindClientIndex(Client *c); 
 };
 

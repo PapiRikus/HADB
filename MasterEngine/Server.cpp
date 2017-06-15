@@ -16,10 +16,12 @@ using namespace std;
 
 //Actually allocate clients
 vector<Client> Server::clients;
+XMLDocument* xmldoc=new XMLDocument("masterMetaData.xml");
 
 Server::Server() 
 {
     hoffman = new HuffmanCompresor();
+//    xmldoc = new XMLDocument("masterMetaData.xml");
     //Initialize static mutex from MyThread
     MyThread::InitMutex();
     //For setsock opt (REUSEADDR)
@@ -112,19 +114,25 @@ void *Server::HandleClient(void *args) {
     else {
       //Message received. Send to all clients.
       snprintf(message, sizeof message, "<%s>: %s", c->name, buffer); 
-      cout << c->name << " messaje was: " << buffer << endl;
       JSON *json = new JSON();
-      json->add("Accion","S");
-      json->add("Tabla","3");
-      json->add("Tablaa", "4");
-      Server::Send(c->id, json->show());
-      Server::SendToPair(c->getId(),json->show());
+      json->setValue(buffer);
+      Server::processQuery(json);
+      Server::SendToPair(c->id,json);
     }
   }
   //End thread
   return NULL;
 }
 
+void Server::processQuery(JSON *json){
+    if(json->getData("soy")=="QE"){
+        cout <<"QE detected"<<endl;
+        if(json->getData("accion")=="C"){
+            cout << "Action create table" <<endl;
+            xmldoc->createTable(json->getData("tabla"),json->getData("columna"),json->getData("tipo"),json->getData("size"));
+        }
+    }
+}
 string Server::toString(char* c){
     stringstream ss;
     string s;
@@ -133,12 +141,12 @@ string Server::toString(char* c){
     return s;
 }
 
-void Server::Send(int diskN, string json) {
+void Server::Send(int diskN, JSON *json) {
   int n = 0;
   //Acquire the lock
   MyThread::LockMutex("'Send()'");
   if(diskN < clients.size()){
-    n = send(Server::clients[diskN].sock, json.c_str() , strlen(json.c_str()), 0);
+    n = send(Server::clients[diskN].sock, json->show().c_str() , strlen(json->show().c_str()), 0);
   }else{
     cout << "Error: the client doesn't exits." << endl;
   }
@@ -147,13 +155,14 @@ void Server::Send(int diskN, string json) {
   MyThread::UnlockMutex("'Send()'");
 }
 
-void Server::SendToPair(int diskN, string json) {
+void Server::SendToPair(int diskN, JSON *json) {
   int n;
   //Acquire the lock
   MyThread::LockMutex("'SendToPair()'");
-  if(diskN+1 < clients.size()){
-       n = send(Server::clients[diskN+1].sock, json.c_str() , strlen(json.c_str()), 0);   
+  if(json->getData("soy")=="DN" & diskN+1 < clients.size()){
+    n = send(Server::clients[diskN+1].sock, json->show().c_str() , strlen(json->show().c_str()), 0);   
   }
+  
   cout << n << " bytes sent." << endl;
   //Release the lock  
   MyThread::UnlockMutex("'SendToPair()'");

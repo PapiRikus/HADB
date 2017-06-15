@@ -188,7 +188,9 @@ void XMLDocument::createTable(std::string pTableName, std::string pColumnName, s
     newColumn->appendChild(columnBytesNode);
     columnBytesNode->appendChild(columnBytesText);
 
-    this->writeInDocument();
+    this->writeInDocument(); 
+    
+    cout << "table created!!!"<< endl;
      
 }
 

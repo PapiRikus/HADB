@@ -62,7 +62,6 @@
             <linkerLibLibItem>xerces-c</linkerLibLibItem>
             <linkerLibLibItem>xerces-c</linkerLibLibItem>
             <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
-            <linkerOptionItem>`pkg-config --libs pthread-stubs`</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs jsoncpp`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
