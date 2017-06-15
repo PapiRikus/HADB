@@ -25,7 +25,7 @@ bool SocketCliente::conectar(){
     if(descriptor < 0)
         return false;
     info.sin_family = AF_INET;
-    info.sin_addr.s_addr = inet_addr("192.168.1.132");
+    info.sin_addr.s_addr = inet_addr("192.168.1.144");
     info.sin_port = ntohs(30667);
     memset(&info.sin_zero,0,sizeof(info.sin_zero));
     

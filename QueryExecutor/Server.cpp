@@ -35,7 +35,6 @@ Server::Server() {
     }
     socketCli=new SocketCliente();
     socketCli->conectar();
-    socketCli->setMensaje("QE");
     cout<<hoffman->decompress(a)<<endl;
   //Initialize static mutex from MyThread
   MyThread::InitMutex();
@@ -115,18 +114,30 @@ void *Server::HandleClient(void *args) {
 //SELECT * FROM orders;
   while(1) {
     memset(buffer, 0, sizeof buffer);
-    n = recv(c->sock, buffer, sizeof buffer, 0);
-    
-    string strr(buffer); 
-    snprintf(message, sizeof message, "<%s>: %s", c->name, buffer);
-    string sstrr="SELECT";    
-    if (sstrr.compare(message)){
-        cout<<"Es un Select"<<endl;
-         sstrr="SELECT * FROM orders;";
-    }
-    
-     bool vv =validarr->ValidarSintaxis(sstrr);
-     cout<<"QUE es sdfd:"<<vv;
+    while(n = recv(c->sock, buffer, sizeof buffer, 0)){
+        
+//        if(n <= 0){
+//            cout<<"entra al break";
+//            break;
+//        }else {
+//        buffer[n] = '\0';                      // NEW
+//        printf("%s", buffer);
+//        }
+//    }
+//    string sstrr="SELECT ";     
+//    string strr(buffer);
+//    for (int i=0;i<sstrr.size();i++){
+//         printf("Buffer is %c\n", sstrr.c_str());
+//    }
+//    if (sstrr.c_str()==(buffer)){
+//        cout<<"Es un Select"<<endl;
+//         sstrr="SELECT * FROM orders;";
+//    }
+//    snprintf(message, sizeof message, "<%s>: %s", c->name, buffer);
+//    sstrr.erase(sstrr.find_last_not_of(" \\s\n\r\t")+1);
+//     
+//    bool vv =validarr->ValidarSintaxis(sstrr);
+//     cout<<"QUE es sdfd:"<<vv;
      //socketCli->setMensaje(buffer);
     //Client disconnected?
     if(n == 0) {
@@ -149,14 +160,20 @@ void *Server::HandleClient(void *args) {
       cerr << "Error while receiving message from client: " << c->name << endl;
     }
     else {
-        cout<<"vv es igual:"<<vv;
+        buffer[n] = '\0';                      // NEW
+        printf("%s", buffer);
+      string strr(buffer);
+      bool vv =validarr->ValidarSintaxis(strr);      
+      cout<<"vv es igual:"<<vv;
+  
         if (vv==false){
           MyThread::LockMutex("'SendToAll()'");
          
           //snprintf(message, sizeof message, "%s", c->name,"Invalid SQL Statmetment");      
           index = Server::FindClientIndex(c);
-          strncat(message, "Invalid SQL Statment\n", sizeof message);
-         // strcpy(message,"Invalid SQL Statment");
+          //strncat(message, "Invalid SQL Statment\n", sizeof message);
+          //strcpy(message,"Invalid SQL Statment");
+          
           cout<<"Esto va a mandar a el mismo:"<<message<<endl;
           n = send(Server::clients[index].sock, message, strlen(message), 0);
           cout << n << " bytes sent." << endl;
@@ -175,16 +192,14 @@ void *Server::HandleClient(void *args) {
             //char tab2[1024];
             //strcpy(tab2, tmp.c_str());
             socketCli->setMensaje(tmp.c_str());
-          index = Server::FindClientIndex(c);
+            index = Server::FindClientIndex(c);
          // strcpy(message,"Invalid SQL Statment");
         //  n = send(Server::clients[index].sock, tab2, strlen(tab2), 0);
           
-  
+            
         //Release the lock  
-            for(int i=0;i<validarr->argumentos.size();i++){
-               strncat(message, validarr->argumentos[i].c_str(), sizeof message);
-               n = send(Server::clients[index].sock, message, strlen(message), 0);
-            }
+          n = send(Server::clients[index].sock, tmp.c_str(), strlen(tmp.c_str()), 0);
+            
           MyThread::UnlockMutex("'SendToAll()'");
         
       }
@@ -195,6 +210,9 @@ void *Server::HandleClient(void *args) {
       //Server::SendToAll(message);
     }
   }
+    ///////SALIDA DE WHILE 1
+    break;
+}
 
   //End thread
   return NULL;

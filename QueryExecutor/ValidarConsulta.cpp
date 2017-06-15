@@ -28,8 +28,10 @@
     regex dropTable("DROP TABLE\\s+(.*?)?;(.*)");
     //1 grupo son la tabla o tablas 
     regex createIndex("CREATE INDEX\\s+\\<(.*?)\\>?;(.*)");
-    
-    regex createTable("CREATE TABLE ([a-zA-Z0-9]+) \\(([a-zA-Z0-9]+( INT| BOOL| CHAR| STRING\\([0-9]+\\))+( REFERENCE\\([a-zA-Z0-9]+\\.[a-zA-Z0-9]+\\))?(,[a-zA-Z0-9]+ (INT|BOOL|CHAR|STRING\\([0-9]+\\))+( REFERENCE\\([a-zA-Z0-9]+\\.[a-zA-Z0-9]+\\))?)*)+(, PRIMARY KEY ([a-zA-Z]+))?\\)(.*)"); 
+    //
+    regex crete();
+    regex createTable("CREATE TABLE ([a-zA-Z0-9]+) \\((([a-zA-Z0-9]+)( INT| BOOL| CHAR| STRING\\([0-9]+\\))+( REFERENCE\\([a-zA-Z0-9]+\\.[a-zA-Z0-9]+\\))?(, (([a-zA-Z0-9]+) (INT|BOOL|CHAR|STRING\\([0-9]+\\)))+( REFERENCE\\([a-zA-Z0-9]+\\.[a-zA-Z0-9]+\\))?)*)+(, (PRIMARY KEY) ([a-zA-Z]+))?\\);");   
+ 
     string data="";
     string aux="";
     string data1 = "{";
@@ -60,8 +62,10 @@ ValidarConsulta::~ValidarConsulta() {
 bool ValidarConsulta::ValidarSintaxis(string query){
     //string query="CREATE TABLE MATRICULA (IDCURSO INT REFERENCE(CURSO.ID), IDALUMNO INT E(ESTUDIANTES.ID))";
    //query="SELECT * FROM orders;";
-    cout<<query<<"Este es el query que entra al validador"<<query;
-   
+    cout<<query<<"Este es el query que entra al validador";
+    printf("%s", query.c_str());
+   query = "CREATE TABLE ESTUDIANTES (NOMBRE STRING(10), ID INT, PRIMARY KEY ID);";
+  
     //string query ="SELECT ID, NOMBRE FROM ESTUDIANTES JOIN CURSOS ON ESTUDIANTES.ID = CURSOS.IDEST;";     
     //string query ="SELECT ID, NOMBRE FROM ESTUDIANTES WHERE ESTUDIANTES.ID = 1;";
     //string query="INSERT INTO test_table VALUES (1, 2, 'test');";
@@ -144,7 +148,16 @@ bool ValidarConsulta::ValidarSintaxis(string query){
         return true;
     
     }
-     if (regex_match(query,createTable)){}
+     if (regex_match(query,createTable)){
+         regex_search(query,m,createTable);        
+        for (int i=0;i<m.size();i++){
+            
+            cout<<"Datos:"<<m.str(i)<<endl;
+            argumentos.push_back(m.str(i));
+        }
+         this->jsonString=jsonCreateTable(m);
+        return true;
+     }
    // std::regex_search(query,m,createIndex);        
         
     cout<<"Tamaño de los grupos"<<m.size()<<"si el 7 esta vacio:";
@@ -157,6 +170,7 @@ bool ValidarConsulta::ValidarSintaxis(string query){
 }
 string ValidarConsulta::jsonSelect(smatch m){
     Json::Value fromScratch;
+    fromScratch["soy"]="QE";
     fromScratch[accion]="S";
     fromScratch [tabla]=m.str(2);
     fromScratch[columna]=m.str(1);
@@ -206,6 +220,37 @@ string ValidarConsulta::jsonSelect(smatch m){
    
    // for (auto v:m)cout <<"Datos"<<v<<endl;
     
+}
+string ValidarConsulta::jsonCreateTable(std::smatch m){
+      Json::Value fromScratch;
+    fromScratch["soy"]="QE";
+    
+      fromScratch[accion]="C";
+    fromScratch [tabla]=m.str(1);
+    string data(m.str(8));
+   // data.append(",");
+    //data.append(m.str(3));
+    fromScratch[columna]=data;
+    string data1(m.str(9));
+    //data1.append(m.str(4));
+    fromScratch[tipo]=data1;
+    cout<<"Esto:"<<m.str(11).length();
+    if (m.str(11).length()==0){
+        string data2(m.str(6));
+        
+        fromScratch["Referencias"]=data2;
+    }else{
+                fromScratch["PrimaryK"]=m.str(m.size()-1);
+
+    }
+    fromScratch["Size"]="4";
+
+    Json::StyledWriter writerr;
+    string out=writerr.write(fromScratch);
+        cout<<out;
+        return out;
+    
+
 }
 
 

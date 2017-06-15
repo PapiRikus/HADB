@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=mutithreadserver1
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/mutithreadserver1
+CND_ARTIFACT_NAME_Debug=queryexecutor
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/queryexecutor
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=mutithreadserver1.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/mutithreadserver1.tar
+CND_PACKAGE_NAME_Debug=queryexecutor.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/queryexecutor.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=mutithreadserver1
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/mutithreadserver1
+CND_ARTIFACT_NAME_Release=queryexecutor
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/queryexecutor
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=mutithreadserver1.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/mutithreadserver1.tar
+CND_PACKAGE_NAME_Release=queryexecutor.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/queryexecutor.tar
 #
 # include compiler specific variables
 #

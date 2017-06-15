@@ -34,7 +34,8 @@ public:
     vector<string>argumentos;
     string jsonString;
     string jsonSelect(std::smatch);  
-    
+    string jsonCreateTable(std::smatch);  
+   
 private:
     bool consulta;
 };
