@@ -29,7 +29,7 @@ class XMLDocument {
         void writeInDocument();
         
     public:
-        XMLDocument(const char*);
+        XMLDocument(const char* pFileName);
         ~XMLDocument();
         
         //Reading methods

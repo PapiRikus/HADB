@@ -2,6 +2,10 @@
 #include <fstream>
 #include <sstream>
 #include "XMLDocument.h"
+#include "ArbolBmas.h"
+#include "NodoProducto.h"
+#include "Server.h"
+
 using namespace std;
 int node = 0;
 /*void setData(string key,string data){
@@ -14,16 +18,17 @@ int node = 0;
     info.append(info);
     info.append(".");
     file.write(info.c_str(), info.size());
-}*/
+}
 string toString(char* c){
     stringstream ss;
     string s;
     ss << c;
     ss >> s;
-}
-int main(){
-    XMLDocument *xmldoc = new XMLDocument("m.xml");
-    xmldoc->createTable("Personas","Nombre","string","10");
+}*/
+int main(int argc, char** argv){
+    //ArbolBmas arbolb = new ArbolBmas();
+    Server *s = new Server();
+    s->AcceptAndDispatch();
     //setData("Hola", "Mundo");
     return 0;
 }

@@ -78,6 +78,7 @@ class Server {
     void AcceptAndDispatch();
     static void *HandleClient(void *args);
     static void Send(int diskN, string json);
+    static string Listen();
   private:
     static string toString(char* c);
     static void ListClients();

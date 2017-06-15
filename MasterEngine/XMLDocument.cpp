@@ -19,7 +19,6 @@ class XMLErrorHandler : public HandlerBase
 // ----------------------------------------------------------------------------- 
 
 XMLDocument::XMLDocument(const char* pFileName) {
-
     this->createParser();
     this->_parser->parse(pFileName);
     this->_document = this->_parser->adoptDocument();
